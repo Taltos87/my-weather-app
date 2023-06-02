@@ -14,11 +14,9 @@ function App() {
 
 
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState({});
-  const [error, setError] = useState('');
+  // const [weatherData, setWeatherData] = useState({});
+  // const [error, setError] = useState('');
 
-
-  useEffect(() => {}, [weatherData]);
 
   const handleInputChange = (event) => {
     setCity(event.target.value);}
