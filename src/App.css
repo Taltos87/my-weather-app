@@ -1,4 +1,15 @@
 .App {
-  background-color: antiquewhite;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
   text-align: center;
+  font-family: 'Monoserat', sans-serif;
+  border-top: 50px solid #000000;
+}
+ 
+h1 {
+  color: navy;
 }
