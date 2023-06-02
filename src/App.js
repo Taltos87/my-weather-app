@@ -1,17 +1,30 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Form from './components/Form.js';
 import WeatherCard from './components/WeatherCard.js';
 import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
+
 function App() {
- <><Form />
- <WeatherCard /></>
 
 
 
+  const [city, setCity] = useState('');
+  const [weatherData, setWeatherData] = useState({});
+  const [error, setError] = useState('');
 
 
+  useEffect(() => {}, [weatherData]);
+
+  const handleInputChange = (event) => {
+    setCity(event.target.value);}
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
 
   
 
@@ -19,7 +32,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My Weather App</h1>
+      <Form 
+      city={city}
+      handleInputChange={handleInputChange}
+      handleSubmit={handleSubmit}
+      
+      
+      />
     </div>
   );
 }
