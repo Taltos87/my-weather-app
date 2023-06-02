@@ -6,4 +6,5 @@ const WeatherCard = (props) => {
             <h1>Weather Card</h1> 
         </div>
     )
-}
+};
+export default WeatherCard;

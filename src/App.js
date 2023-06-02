@@ -5,7 +5,17 @@ import WeatherCard from './components/WeatherCard.js';
 import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
+ <><Form />
+ <WeatherCard /></>
+
+
+
+
+
+
   
+
+
 
   return (
     <div className="App">
