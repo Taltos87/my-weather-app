@@ -9,10 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const API_KEY = "2bcda0ef514ca396d716955408357744";
 
 
-function App() {
+ function App() 
+ {
   
     const [city, setCity] = useState('');
-    const [weatherData, setWeatherData] = useState();
+    const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState('');
 
  useEffect(() => { 
@@ -31,10 +32,11 @@ function App() {
     setError('Geolocation is not supported by this browser');
   }
 }, []);
-  async function feachWeatherDataByCoords(latitude, longitude) {
+  async function fetchWeatherDataByCoords(latitude, longitude) {
     try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2bcda0ef514ca396d716955408357744&units=metric`);
-      if (!response.ok) { throw new Error('Something went wrong!'); }
+      if (!response.ok)
+       { throw new Error('Something went wrong!'); }
 
       const data = await response.json();
       setWeatherData(data);
@@ -44,30 +46,30 @@ function App() {
       setError('Fetching data failed!');
     };
 
-  };
+  }
   
   const handleInputChange = (event) => {
     setCity(event.target.value);
   };
-  const handleSubmit  = (event) => {
+  const handleSubmit  = async (event) => {
     event.preventDefault();
-  };
+
 
   try {const response = await fetch(
-  `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+  `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
 
 
-  if (!response.ok) {throw new Error('City not found');}
+  if (!response.ok) 
+  {throw new Error('City not found');}
      
   const data = await response.json();
   setWeatherData(data);
   setError('');
   } catch (error) {
-    setWeatherData(null);
+    setWeatherData({});
     setError('City not found');
-  }   
+  } 
   };
-
   return (
     <div className="App">
       <h2 className=''>React Weather App</h2>
@@ -78,8 +80,9 @@ function App() {
       handleSubmit={handleSubmit}
       />
       {error && <p className=''>{error}</p>}
-      {weatherData.main && <WeatherCard weatherData={weatherData} />}
+      {weatherData && weatherData.main && <WeatherCard weatherData={weatherData} />}
     </div>
   );
-
+  
+};
 export default App;
