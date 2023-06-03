@@ -24,33 +24,38 @@ function App() {
         },
     (error) => { console.log(error);
       setError('Failed to get your location.');
-    }); } else{
-   setError('Geolocation is not supported by this browser.');
-  }, []);
-
-  async function feachWeatherDatabyCoords(latitude, longitude) {
-     try {
-       const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2bcda0ef514ca396d716955408357744&units=metric`);
-       if (!response.ok) {throw new Error('Something went wrong!');}
-
-       const data = await response.json();
-       setWeatherData(data);
-       setError('');
-     } catch (error) {
-       setWeatjerData(null);
-       setError('Fetching data failed!');
-     };
-
-   }
+    }
+    ); 
   
-  function handleInputChange(event) {
-    setCity(event.target.value);
+  } else {
+    setError('Geolocation is not supported by this browser');
   }
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+}, []);
+  async function feachWeatherDataByCoords(latitude, longitude) {
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2bcda0ef514ca396d716955408357744&units=metric`);
+      if (!response.ok) { throw new Error('Something went wrong!'); }
 
-  try {const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+      const data = await response.json();
+      setWeatherData(data);
+      setError('');
+    } catch (error) {
+      setWeatherData(null);
+      setError('Fetching data failed!');
+    };
+
+  };
+  
+  const handleInputChange = (event) => {
+    setCity(event.target.value);
+  };
+  const handleSubmit  = (event) => {
+    event.preventDefault();
+  };
+
+  try {const response = await fetch(
+  `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+
 
   if (!response.ok) {throw new Error('City not found');}
      
@@ -72,6 +77,7 @@ function App() {
       handleInputChange={handleInputChange}
       handleSubmit={handleSubmit}
       />
+      {error && <p className=''>{error}</p>}
       {weatherData.main && <WeatherCard weatherData={weatherData} />}
     </div>
   );
