@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-const Form = (props) => {
-    const { city, setCity } = useState('');
-    const handleInputChange  = (event) => {
-        setCity(event.target.value);
-    }
-    
+const Form = ({ city, handleInputChange, handleSubmit }) => {
     return (
-        <div className="Form">
+        <form onSubmit={handleSubmit}>
             <div className="input-group mb-3">
             <input 
             type="text" 
@@ -17,11 +12,12 @@ const Form = (props) => {
             value={city}
             onChange={handleInputChange} 
              />
-             <Button className="btn btn-primary" type="submit">Get Weather</Button>
+             <Button className="btn btn-primary" 
+             type="submit">Get Weather</Button>
             </div>
      
-        </div>
-    )
+       </form>
+    );
 };
 
 
