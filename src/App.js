@@ -6,17 +6,40 @@ import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
+const API_KEY = "2bcda0ef514ca396d716955408357744";
 
 
 function App() {
+  
+    const [city, setCity] = useState('');
+    const [weatherData, setWeatherData] = useState({});
+    const [error, setError] = useState('');
 
+ useEffect(() => { 
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;},
+      (error) => {console.log(error);});
 
-
-  const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState({});
-  // const [error, setError] = useState('');
-
+  const feachWeatherDatabyCoords = async (latitude , longitude) => { 
+    try {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2bcda0ef514ca396d716955408357744&units=metric`);
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
+  
+      const data = await response.json();
+      setWeatherData(data);
+      setError('');
+     } catch (error) {
+      setWeatjerData(null);
+      setError('Fetching data failed!');};
+      
+    };
+      
+      // const data = await res.json();
+      // setWeatherData(data);
+      // setError('');
 
   const handleInputChange = (event) => {
     setCity(event.target.value);}
