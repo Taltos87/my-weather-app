@@ -14,7 +14,7 @@ function App() {
 
 
   const [city, setCity] = useState('');
-  // const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({});
   // const [error, setError] = useState('');
 
 
@@ -30,13 +30,14 @@ function App() {
 
   return (
     <div className="App">
+      <h2 className=''>React Weather App</h2>
+      <p className=''>Local Time</p>
       <Form 
       city={city}
       handleInputChange={handleInputChange}
       handleSubmit={handleSubmit}
-      
-      
       />
+      {weatherData.main && <WeatherCard weatherData={weatherData} />}
     </div>
   );
 }

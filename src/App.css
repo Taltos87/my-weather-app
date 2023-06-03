@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 60vh;
   text-align: center;
   font-family: 'Monoserat', sans-serif;
   border-top: 100px solid #000000;
@@ -12,4 +12,46 @@
  
 h1 {
   color: navy;
+}
+h2 {
+  color: navy;
+}
+
+.text-primary {
+  color: navy;
+}
+.text-muted {
+  color: grey;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 20;
+  box-shadow: none;
+}
+.btn-primary {
+  background-color: navy;
+  border-color: navy;
+  border-radius: 20;
+}
+.btn-primary:hover {
+  background-color: purple;
+  border-color: #53245f;
+}
+
+
+.card {
+  border-radius: 20;
+  border-color: #ced4da;
+  box-shadow: none;
+}
+.card-body { 
+  background-color:#f8f8f8;
+}
+
+.card-title {
+  color: navy;
+}
+.card-text {
+  color: grey;
 }

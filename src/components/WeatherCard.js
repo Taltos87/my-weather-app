@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState , useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const WeatherCard = (props) => { 
+
+const WeatherCard = ({weatherData}) => { 
     return (
-        <div className="WeatherCard">
-            <h1>Weather Card</h1> 
+    <div className='card'>
+        <div cardNmae='card-body'>
+        <h1 className='card-title'>{weatherData.name}</h1>
+        <p cardNmae='card-text'> Tempreture: {weatherData} C</p>
+        {/* <p> Humidity: {weatherData} %</p> */}
+        <p cardNmae='card-text'> Description: {weatherData.weather[0].description}</p>
+
         </div>
-    )
+    </div>
+    );
 };
 export default WeatherCard;
