@@ -7,11 +7,16 @@ const WeatherCard = ({weatherData}) => {
     <div className='card'>
         <div cardNmae='card-body'>
         <h1 className='card-title'>{weatherData.name}</h1>
-        <p cardNmae='card-text'> Tempreture: {Math.round(weatherData.main.temp)}°C</p>
+        <p> Tempreture: {Math.round(weatherData.main.temp)}°C</p>
         {/* <p> Humidity: {weatherData} %</p> */}
-        <p cardNmae='card-text'> Description: {weatherData.weather[0].description}</p>
-
+        <p> Description: {weatherData.weather[0].description}</p>
+         
         </div>
+     <div>
+        <a href={`https://github.com/Taltos87/my-weather-app`} >Open Source Code</a> 
+        <p> by Ana-Maria Paraschivu </p>
+        
+        </div>   
     </div>
     );
 };

@@ -8,6 +8,7 @@
   text-align: center;
   font-family: 'Monoserat', sans-serif;
   border-top: 100px solid #000000;
+  border-bottom: 100px solid #000000;
 }
  
 h1 {
@@ -41,8 +42,9 @@ h2 {
 
 
 .card {
+  width: 20rem;
   border-radius: 20;
-  border-color: #ced4da;
+  border-color: antiquewhite;
   box-shadow: none;
 }
 .card-body { 
@@ -52,11 +54,6 @@ h2 {
 .card-title {
   color: navy;
 }
-.card-text {
-  color: grey;
-}
-.weather-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px; 
+p {
+  color: navy;
 }
