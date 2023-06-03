@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { Button } from 'react-bootstrap';
 
 const Form = ({ city, handleInputChange, handleSubmit }) => {
@@ -12,8 +12,8 @@ const Form = ({ city, handleInputChange, handleSubmit }) => {
             value={city}
             onChange={handleInputChange} 
              />
-             <Button className="btn btn-primary" 
-             type="submit">Get Weather</Button>
+             <Button className="btn btn-primary" type="submit">
+                Get Weather</Button>
             </div>
      
        </form>

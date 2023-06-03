@@ -73,7 +73,7 @@ const API_KEY = "2bcda0ef514ca396d716955408357744";
   return (
     <div className="App">
       <h2 className=''>React Weather App</h2>
-      <p className=''>Local Time</p>
+      <p className=''>Local Time: {moment().format('LLLL')} </p>
       <Form 
       city={city}
       handleInputChange={handleInputChange}
