@@ -12,17 +12,21 @@ const API_KEY = "2bcda0ef514ca396d716955408357744";
 function App() {
   
     const [city, setCity] = useState('');
-    const [weatherData, setWeatherData] = useState({null});
+    const [weatherData, setWeatherData] = useState();
     const [error, setError] = useState('');
 
  useEffect(() => { 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;},
-      (error) => {console.log(error);});
-      feachWeatherDatabyCoords(latitude, longitude);}, {
-        timeout: 20000, else {setError('Geolocation is not supported by this browser.');}
-      }
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchWeatherDataByCoords(latitude, longitude);
+        },
+    (error) => { console.log(error);
+      setError('Failed to get your location.');
+    }); } else{
+   setError('Geolocation is not supported by this browser.');
+  }, []);
 
   async function feachWeatherDatabyCoords(latitude, longitude) {
      try {
@@ -38,8 +42,7 @@ function App() {
      };
 
    }
-  }, []);
-
+  
   function handleInputChange(event) {
     setCity(event.target.value);
   }
@@ -47,9 +50,18 @@ function App() {
     event.preventDefault();
   }
 
-  
+  try {const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
 
-
+  if (!response.ok) {throw new Error('City not found');}
+     
+  const data = await response.json();
+  setWeatherData(data);
+  setError('');
+  } catch (error) {
+    setWeatherData(null);
+    setError('City not found');
+  }   
+  };
 
   return (
     <div className="App">
@@ -63,6 +75,5 @@ function App() {
       {weatherData.main && <WeatherCard weatherData={weatherData} />}
     </div>
   );
-}
 
 export default App;
