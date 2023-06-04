@@ -32,6 +32,8 @@ const API_KEY = "2bcda0ef514ca396d716955408357744";
     setError('Geolocation is not supported by this browser');
   }
 }, []);
+
+
   async function fetchWeatherDataByCoords(latitude, longitude) {
     try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2bcda0ef514ca396d716955408357744&units=metric`);
@@ -45,7 +47,7 @@ const API_KEY = "2bcda0ef514ca396d716955408357744";
       setWeatherData(null);
       setError('Fetching data failed!');
     };
-
+   
   }
   
   const handleInputChange = (event) => {
@@ -72,8 +74,9 @@ const API_KEY = "2bcda0ef514ca396d716955408357744";
   };
   return (
     <div className="App">
-      <h2 className=''>React Weather App</h2>
+      <h2 className=''>for Shecodes - The React Weather App</h2>
       <p className=''>Local Time: {moment().format('LLLL')} </p>
+      <p className=''> This is the information for: {city}</p>
       <Form 
       city={city}
       handleInputChange={handleInputChange}
