@@ -26,7 +26,7 @@ const API_KEY = "2bcda0ef514ca396d716955408357744";
     (error) => { console.log(error);
       setError('Failed to get your location.');
     }
-    ); 
+   ); 
   
   } else {
     setError('Geolocation is not supported by this browser');
@@ -36,7 +36,8 @@ const API_KEY = "2bcda0ef514ca396d716955408357744";
 
   async function fetchWeatherDataByCoords(latitude, longitude) {
     try {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2bcda0ef514ca396d716955408357744&units=metric`);
+      const response = await fetch(
+        `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`);
       if (!response.ok)
        { throw new Error('Something went wrong!'); }
 
